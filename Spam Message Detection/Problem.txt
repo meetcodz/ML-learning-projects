@@ -1,0 +1,29 @@
+Problem Statement
+
+Spam messages are a common issue in digital communication platforms and can lead to fraud, phishing attacks, and poor user experience. The objective of this project is to develop a machine learning-based spam detection system that automatically classifies SMS messages as:
+
+spam
+non-spam (ham)
+
+The system processes raw text messages and converts them into numerical representations using Natural Language Processing (NLP) techniques such as Bag-of-Words vectorization with CountVectorizer.
+
+Using supervised machine learning algorithms, the model learns patterns commonly found in spam messages such as:
+
+promotional keywords
+suspicious phrases
+repetitive patterns
+
+The project aims to:
+
+automate spam filtering
+improve message security
+reduce unwanted communication
+demonstrate the application of NLP in text classification problems
+
+The implementation includes:
+
+text preprocessing
+feature extraction
+vectorization
+Logistic Regression classification
+model evaluation using accuracy and classification metrics.
