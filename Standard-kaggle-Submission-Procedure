@@ -1,0 +1,152 @@
+# Kaggle Submission Guide
+
+This guide explains the complete workflow used to generate and submit predictions for the Kaggle competition:
+
+House Prices - Advanced Regression Techniques
+
+Competition Link:  
+https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques
+
+---
+
+# Step 1 — Train the Model
+
+Train the Machine Learning model using the training dataset.
+
+```python
+model.fit(X, y)
+```
+
+Where:
+- `X` = input features
+- `y` = target variable (`SalePrice`)
+
+---
+
+# Step 2 — Generate Predictions
+
+Use the trained model to predict house prices for Kaggle's `test.csv` dataset.
+
+```python
+test_predictions = model.predict(test_csv)
+```
+
+The `test.csv` file does not contain target values because Kaggle evaluates predictions using hidden labels.
+
+---
+
+# Step 3 — Create Submission DataFrame
+
+Create a DataFrame containing:
+- `Id`
+- predicted `SalePrice`
+
+```python
+submission = pd.DataFrame({
+    'Id': test_csv['Id'],
+    'SalePrice': test_predictions
+})
+```
+
+This format is required by Kaggle.
+
+---
+
+# Step 4 — Export Submission File
+
+Save predictions into a CSV file.
+
+```python
+submission.to_csv('submission.csv', index=False)
+```
+
+## Why `index=False`?
+
+Prevents pandas from adding an unnecessary index column which may cause submission errors.
+
+---
+
+# Step 5 — Download CSV From Google Colab
+
+If using Google Colab:
+
+```python
+from google.colab import files
+
+files.download('submission.csv')
+```
+
+This downloads the file to your local machine.
+
+---
+
+# Step 6 — Submit on Kaggle
+
+Go to the Kaggle competition page:
+
+https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques
+
+Then:
+1. Open the **Submit Predictions** section
+2. Upload `submission.csv`
+3. Submit the file
+4. Wait for Kaggle to calculate the leaderboard score
+
+---
+
+# Submission File Format
+
+The final CSV file must look like:
+
+| Id | SalePrice |
+|----|------------|
+| 1461 | 169277.05 |
+| 1462 | 187758.39 |
+
+---
+
+# Important Notes
+
+- The submission file must contain EXACT column names.
+- Predictions must be generated using Kaggle's `test.csv`.
+- Do not include extra columns.
+- Always verify submission format before uploading.
+
+---
+
+# Workflow Summary
+
+```text
+Load train.csv
+       ↓
+Train ML model
+       ↓
+Predict test.csv
+       ↓
+Create submission DataFrame
+       ↓
+Export submission.csv
+       ↓
+Download from Colab
+       ↓
+Upload to Kaggle
+       ↓
+Receive leaderboard score
+```
+
+---
+
+# Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Google Colab
+- Kaggle
+
+---
+
+# Author
+
+Meet Modi
